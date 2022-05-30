@@ -1,40 +1,30 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./sidebar.css";
 
 export default function Sidebar() {
-  const [cats, setCats] = useState([]);
 
-  useEffect(() => {
-    const getCats = async () => {
-      const res = await axios.get("/categories");
-      setCats(res.data);
-    };
-    getCats();
-  }, []);
   return (
     <div className="sidebar">
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME</span>
         <img
-          src="https://i.pinimg.com/236x/1e/3f/58/1e3f587572a7a7b20bbf1828595a1786--holiday-party-themes-holiday-gift-guide.jpg"
+          src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d13db1b9-cbb6-46ae-b32d-72a22ba00036/d2cfyp3-4d2c4cd9-7fb8-4b52-bf11-4788d384ddc9.jpg/v1/fill/w_900,h_830,q_75,strp/_hi_there_____by_crimsonkanji_d2cfyp3-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODMwIiwicGF0aCI6IlwvZlwvZDEzZGIxYjktY2JiNi00NmFlLWIzMmQtNzJhMjJiYTAwMDM2XC9kMmNmeXAzLTRkMmM0Y2Q5LTdmYjgtNGI1Mi1iZjExLTQ3ODhkMzg0ZGRjOS5qcGciLCJ3aWR0aCI6Ijw9OTAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.nmrNRmWExOh6ElJLzI5YWz5XVZNf-pgyw0ibah0DmXQ"
           alt=""
+          className="sidebarImage"
         />
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate qui
-          necessitatibus nostrum illum reprehenderit.
+          This is a group project for the course "Web Development" at the
+          <br />
+          Chitkara University of Engineering and Technology.
+          <br />
+          <br />
+          This would be a blog where you can write and share your own posts. Your
+          posts will then be assesed by our <b>bot-team</b> and you will be given a
+           <b>sentiment</b> score which will be displayed on the front-end.
+          <br />
+          <br />
+          You can also see the sentiment score of other people's posts.
+          <br />
         </p>
-      </div>
-      <div className="sidebarItem">
-        <span className="sidebarTitle">CATEGORIES</span>
-        <ul className="sidebarList">
-          {cats.map((c) => (
-            <Link to={`/?cat=${c.name}`} className="link">
-            <li className="sidebarListItem">{c.name}</li>
-            </Link>
-          ))}
-        </ul>
       </div>
       <div className="sidebarItem">
         <span className="sidebarTitle">FOLLOW US</span>

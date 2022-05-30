@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./topbar.css";
+import generateImage from "../utils/imageUtil";
 
 export default function TopBar() {
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:5000/images/"
+  const PF = "http://localhost:5000/images/";
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -26,12 +27,12 @@ export default function TopBar() {
             </Link>
           </li>
           <li className="topListItem">
-            <Link className="link" to="/">
+            <Link className="link" to="/about">
               ABOUT
             </Link>
           </li>
           <li className="topListItem">
-            <Link className="link" to="/">
+            <Link className="link" to="/contact">
               CONTACT
             </Link>
           </li>
@@ -48,7 +49,15 @@ export default function TopBar() {
       <div className="topRight">
         {user ? (
           <Link to="/settings">
-            <img className="topImg" src={PF+user.profilePic} alt="" />
+            <img
+              className="topImg"
+              src={
+                user.profilePic !== ""
+                  ? PF + user.profilePic
+                  : generateImage(user.username)
+              }
+              alt="avatar"
+            />
           </Link>
         ) : (
           <ul className="topList">
@@ -64,7 +73,6 @@ export default function TopBar() {
             </li>
           </ul>
         )}
-        <i className="topSearchIcon fas fa-search"></i>
       </div>
     </div>
   );
