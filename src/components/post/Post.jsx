@@ -1,6 +1,10 @@
 import "./post.css";
 import { Link } from "react-router-dom";
 
+import  positive  from '../../assets/icons/positive.png'
+import negative from '../../assets/icons/negative.png'
+import neutral from '../../assets/icons/neutral.png'
+
 export default function Post({ post }) {
   const PF = "http://localhost:5000/images/";
   return (
@@ -16,9 +20,20 @@ export default function Post({ post }) {
           <span className="postTitle">{post.title}</span>
         </Link>
         <hr />
-        <span className="postDate">
-          {new Date(post.createdAt).toDateString()}
-        </span>
+        <div className="Stats">
+          <span className="postDate">
+            {new Date(post.createdAt).toDateString()}
+          </span>
+          <img
+            src={post.rating < -2 ?
+              negative :
+              post.rating >= -2 && post.rating <= 2 ?
+                neutral :
+                positive
+             }
+            className="rating" alt="rating"></img>
+          <p className="ratingPara">rating: {post.rating}</p>
+        </div>
       </div>
       <p className="postDesc">{post.desc}</p>
     </div>

@@ -41,6 +41,7 @@ export default function Settings() {
       dispatch({ type: "UPDATE_FAILURE" });
     }
   };
+  console.log(user);
   return (
     <div className="settings">
       <div className="settingsWrapper">
