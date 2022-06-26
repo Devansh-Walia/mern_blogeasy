@@ -3,15 +3,16 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import DevCard from "../../components/developerCard/DevCard";
 import axios from "axios";
-const devsData = ["Devansh-Walia"];
+import { API } from "../../Constants";
 
+const devsData = ["Devansh-Walia"];
 export default function About() {
   const [developers, setDevelopers] = useState([]);
   const { search } = useLocation();
 
   useEffect(() => {
     const fetchDevelopers = async () => {
-      const devS = await axios.post("/devs", { devs: devsData });
+      const devS = await axios.post(`${API}/devs`, { devs: devsData });
       setDevelopers(devS.data);
     };
     fetchDevelopers();
