@@ -6,7 +6,7 @@ import negative from '../../assets/icons/negative.png'
 import neutral from '../../assets/icons/neutral.png'
 
 export default function Post({ post }) {
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://blog-easy.herokuapp.com/images/";
   return (
     <div className="post">
       {post.photo && <img className="postImg" src={PF + post.photo} alt="" />}
